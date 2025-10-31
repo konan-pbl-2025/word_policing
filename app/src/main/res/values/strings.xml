@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">word_policing</string>
+    <string name="direction_left">LEFT</string>
+    <string name="direction_right">RIGHT</string>
 </resources>
