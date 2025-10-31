@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 public class MemberInput extends AppCompatActivity {
 
+    private int currentNumber = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,25 +25,28 @@ public class MemberInput extends AppCompatActivity {
         // TextViewから文字列を取得
         String currentText = numtext.getText().toString();
         // 文字列から数字を取り出す（整数に変換）
-        int currentNumber = Integer.parseInt(currentText);
+        currentNumber = Integer.parseInt(currentText);
+
+//        int newNumber = currentNumber;
+
         leftbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 数字を加算または減算する
-                int newNumber = currentNumber + 1;  // +1
+                currentNumber += 1;  // +1
 
                 // 結果をTextViewにセット
-                numtext.setText(String.valueOf(newNumber));
+                numtext.setText(String.valueOf(currentNumber));
             }
         });
         rightbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 数字を加算または減算する
-                int newNumber = currentNumber - 1;  // -1
+                currentNumber -= 1;  // -1
 
                 // 結果をTextViewにセット
-                numtext.setText(String.valueOf(newNumber));
+                numtext.setText(String.valueOf(currentNumber));
             }
         });
 
