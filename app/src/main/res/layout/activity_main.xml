@@ -8,31 +8,29 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="489dp"
-        android:layout_height="751dp"
+        android:layout_width="510dp"
+        android:layout_height="801dp"
         app:srcCompat="@drawable/eb6a259b89da736f"
-        tools:layout_editor_absoluteX="-39dp"
-        tools:layout_editor_absoluteY="-10dp" />
+        tools:layout_editor_absoluteX="-70dp"
+        tools:layout_editor_absoluteY="-35dp" />
 
     <Button
         android:id="@+id/original"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="172dp"
         android:text="単語説明"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="506dp" />
 
     <Button
         android:id="@+id/general"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="448dp"
         android:text="通常プレイ"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        tools:layout_editor_absoluteY="431dp" />
 
     <Button
         android:id="@+id/rule"
