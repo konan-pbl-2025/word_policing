@@ -75,7 +75,7 @@ public class ThemeDisplay extends AppCompatActivity {
                             // お題表示フェーズへ
                             if (wolfchecker.contains(playerIndex + 1)) theme = wolftheme;
                             else theme = maintheme;
-                            themetext.setText("お題 : " + theme);
+                            themetext.setText("お題 \n「" + theme + "」");
                             personcheck.setText("次の人に回す");
                             isConfirmPhase = false;
                         } else {
