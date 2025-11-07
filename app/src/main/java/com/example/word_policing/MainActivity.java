@@ -35,6 +35,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Intent member = new Intent(MainActivity.this, MemberInput.class);
+                startActivity(member);
+            }
+        });
+
+
+        RuleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
                 // ✅ 1. カスタムレイアウトを読み込む
                 LayoutInflater inflater = getLayoutInflater();
                 View popupView = inflater.inflate(R.layout.popup_rules, null);
@@ -54,8 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
 
                 dialog.show();
-                Intent member = new Intent(MainActivity.this, MemberInput.class);
-                startActivity(member);
             }
         });
     }
