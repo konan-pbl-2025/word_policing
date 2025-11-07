@@ -2,6 +2,7 @@ package com.example.word_policing;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -92,6 +93,16 @@ public class MemberInput extends AppCompatActivity {
                     }
                 } else {
                     nametext.setHint("これ以上入力できません！");
+                }
+            }
+        });
+
+        nextbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (playerNames.size() == currentNumber){
+                    Intent member = new Intent(MemberInput.this, ThemeDisplay.class);
+                    startActivity(member);
                 }
             }
         });
