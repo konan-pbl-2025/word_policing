@@ -22,10 +22,10 @@
         android:layout_height="293dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.561" />
+        app:layout_constraintTop_toBottomOf="@+id/NameText"
+        app:layout_constraintVertical_bias="0.3" />
 
     <TextView
         android:id="@+id/num"
@@ -44,7 +44,6 @@
         android:layout_height="62dp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/player_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.288"
@@ -97,7 +96,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.83" />
+        app:layout_constraintTop_toBottomOf="@+id/MemberListText"
+        app:layout_constraintVertical_bias="0.597" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
