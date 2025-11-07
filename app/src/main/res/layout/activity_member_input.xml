@@ -34,7 +34,6 @@
         android:layout_height="62dp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/player_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.288"

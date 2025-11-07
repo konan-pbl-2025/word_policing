@@ -26,8 +26,7 @@ public class MemberInput extends AppCompatActivity {
         TextView numtext = (TextView) findViewById(R.id.num);
         numtext.setText(String.valueOf(3));   // 初期値
         EditText nametext = (EditText) findViewById(R.id.NameText);
-        String playerName = getString(R.string.player_name, 1);  // "プレイヤー1" を設定
-        nametext.setText(playerName);  // nametextに設定
+        nametext.setHint("プレイヤー１"); // プレイヤー１を表示
         ListView memberlist = (ListView) findViewById(R.id.MemberListText);
         ArrayList<String> playerNames = new ArrayList<>();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, playerNames);
@@ -45,6 +44,10 @@ public class MemberInput extends AppCompatActivity {
                 if (currentNumber > 3 ) {
                     currentNumber -= 1;  // 現在人数-1
                 }
+                if (currentNumber < playerNames.size()) {
+                    playerNames.remove(playerNames.size()-1);
+                    adapter.notifyDataSetChanged();
+                }
                 // 結果をTextViewにセット
                 numtext.setText(String.valueOf(currentNumber));
             }
@@ -55,6 +58,9 @@ public class MemberInput extends AppCompatActivity {
                 // 数字を加算する
                 if (currentNumber < 6 ) {
                     currentNumber += 1;  // 現在人数+1
+                    // 名前入力ができるようにする
+                    nametext.setEnabled(true);
+                    nametext.setHint("プレイヤー" + currentNumber);
                 }
                 // 結果をTextViewにセット
                 numtext.setText(String.valueOf(currentNumber));
@@ -82,10 +88,10 @@ public class MemberInput extends AppCompatActivity {
                     // 設定人数になったら名前を設定できないようにする
                     if (playerCount == currentNumber - 1) {
                         nametext.setEnabled(false);
-                        nametext.setText("これ以上入力できません！");
+                        nametext.setHint("これ以上入力できません！");
                     }
                 } else {
-                    nametext.setText("これ以上入力できません！");
+                    nametext.setHint("これ以上入力できません！");
                 }
             }
         });
