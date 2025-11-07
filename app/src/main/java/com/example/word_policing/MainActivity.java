@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         GeneralButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent member = new Intent(MainActivity.this, MemberInput.class);
+                Intent member = new Intent(MainActivity.this, ThemaSelect.class);
                 startActivity(member);
             }
         });
