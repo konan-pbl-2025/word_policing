@@ -38,6 +38,7 @@ public class MemberInput extends AppCompatActivity {
         // 文字列から数字を取り出す（整数に変換）
         currentNumber = Integer.parseInt(currentText);
 
+        // 人数減少ボタン
         leftbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +54,8 @@ public class MemberInput extends AppCompatActivity {
                 numtext.setText(String.valueOf(currentNumber));
             }
         });
+
+        // 人数増加ボタン
         rightbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,6 +71,7 @@ public class MemberInput extends AppCompatActivity {
             }
         });
 
+        // メンバー確定ボタン
         addbutoon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +101,7 @@ public class MemberInput extends AppCompatActivity {
             }
         });
 
+        // 次の画面に遷移
         nextbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
