@@ -18,9 +18,9 @@ public class MemberInput extends AppCompatActivity {
         Button leftbutton = (Button) findViewById(R.id.left);
         leftbutton.setText(R.string.direction_left);
         Button rightbutton = (Button) findViewById(R.id.right);
-        leftbutton.setText(R.string.direction_right);
+        rightbutton.setText(R.string.direction_right);
         TextView numtext = (TextView) findViewById(R.id.num);
-        numtext.setText(String.valueOf(2));   // 初期値
+        numtext.setText(String.valueOf(3));   // 初期値
 
         // TextViewから文字列を取得
         String currentText = numtext.getText().toString();
@@ -32,9 +32,10 @@ public class MemberInput extends AppCompatActivity {
         leftbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 数字を加算または減算する
-                currentNumber += 1;  // +1
-
+                // 数字を減算する
+                if (currentNumber > 3 ) {
+                    currentNumber -= 1;  // 現在人数-1
+                }
                 // 結果をTextViewにセット
                 numtext.setText(String.valueOf(currentNumber));
             }
@@ -42,8 +43,10 @@ public class MemberInput extends AppCompatActivity {
         rightbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 数字を加算または減算する
-                currentNumber -= 1;  // -1
+                // 数字を加算する
+                if (currentNumber < 6 ) {
+                    currentNumber += 1;  // 現在人数+1
+                }
 
                 // 結果をTextViewにセット
                 numtext.setText(String.valueOf(currentNumber));
