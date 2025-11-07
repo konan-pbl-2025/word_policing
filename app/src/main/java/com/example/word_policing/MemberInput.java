@@ -14,7 +14,8 @@ import java.util.ArrayList;
 
 public class MemberInput extends AppCompatActivity {
 
-    private int currentNumber = 0;
+    int currentNumber = 0;
+    public static ArrayList<String> playerNames = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +30,6 @@ public class MemberInput extends AppCompatActivity {
         EditText nametext = (EditText) findViewById(R.id.NameText);
         nametext.setHint("プレイヤー１"); // プレイヤー１を表示
         ListView memberlist = (ListView) findViewById(R.id.MemberListText);
-        ArrayList<String> playerNames = new ArrayList<>();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, playerNames);
         memberlist.setAdapter(adapter);;
 

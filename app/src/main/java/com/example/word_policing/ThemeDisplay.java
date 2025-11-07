@@ -22,6 +22,7 @@ public class ThemeDisplay extends AppCompatActivity {
     String wolftheme = "がお";
     String theme;
 
+
     boolean isConfirmPhase = true; // true: 確認画面, false: お題画面
 
     @Override
@@ -31,7 +32,6 @@ public class ThemeDisplay extends AppCompatActivity {
 
         TextView themetext = findViewById(R.id.text);
         Button personcheck = findViewById(R.id.person);
-        String[] Names = {"aさん", "bさん", "cさん", "dさん", "eさん"};
         int n = playerNum; // 数字の範囲（1〜n）
         int k = wolfnum;  // 選ぶ個数
         // 1〜nの数字をリストに追加
@@ -47,7 +47,7 @@ public class ThemeDisplay extends AppCompatActivity {
         }
 
         // 初期表示
-        themetext.setText(Names[0] +"ですか");
+        themetext.setText(MemberInput.playerNames.get(0) +"ですか");
         personcheck.setText("確定");
 
         personcheck.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +82,7 @@ public class ThemeDisplay extends AppCompatActivity {
                             // 次の人の確認フェーズへ
                             playerIndex++;
                             if (playerIndex < playerNum) {
-                                themetext.setText(Names[playerIndex] + "ですか");
+                                themetext.setText(MemberInput.playerNames.get(playerIndex) + "ですか");
                                 personcheck.setText("確定");
                                 isConfirmPhase = true;
                             } else {
