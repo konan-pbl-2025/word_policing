@@ -2,4 +2,7 @@
     <string name="app_name">word_policing</string>
     <string name="direction_left">減らす</string>
     <string name="direction_right">増やす</string>
+    <string name="player_name">プレイヤー</string>
+    <string name="add_button">追加</string>
+    <string name="next_button">次へ</string>
 </resources>
