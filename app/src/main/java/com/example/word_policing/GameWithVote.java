@@ -1,6 +1,8 @@
 package com.example.word_policing;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +20,7 @@ public class GameWithVote extends AppCompatActivity {
         Button button1 = findViewById(R.id.topic1);
         Button button2 = findViewById(R.id.topic2);
         Button button3 = findViewById(R.id.topic3);
+        Button death = findViewById(R.id.kill);
 
         // ボタン1のクリック処理
         button1.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +43,13 @@ public class GameWithVote extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 topicText.setText("すごいよね。");
+            }
+        });
+        death.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent member = new Intent(GameWithVote.this, killselect.class);
+                startActivity(member);
             }
         });
     }
