@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal"
+    android:background="#102040"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- 長文をスクロールできるようにする -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/ruleText"
+            android:text="【ゲームルール】\n\nここに長文のルール説明を書きます。"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:lineSpacingExtra="4dp"
+            android:gravity="left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+    <!-- 下に固定される「閉じる」ボタン -->
+    <Button
+        android:id="@+id/popupCloseButton"
+        android:text="閉じる"
+        android:textColor="#FFFFFF"
+        android:background="#203060"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>
