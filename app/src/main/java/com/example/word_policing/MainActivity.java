@@ -2,6 +2,7 @@ package com.example.word_policing;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,11 +15,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button ruleButton = (Button) findViewById(R.id.rule);
-        ruleButton.setOnClickListener(new View.OnClickListener() {
+        Button GeneralButton = (Button) findViewById(R.id.general);
+        Button OriginalButton = (Button) findViewById(R.id.original);
+        Button RuleButton = (Button) findViewById(R.id.rule);
+
+        GeneralButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent member = new Intent(MainActivity.this, MemberInput.class);
+                startActivity(member);
             }
         });
+
+        OriginalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent member = new Intent(MainActivity.this, MemberInput.class);
+                startActivity(member);
+            }
+        });
+
     }
 }
+
+
