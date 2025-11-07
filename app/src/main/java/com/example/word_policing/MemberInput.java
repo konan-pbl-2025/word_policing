@@ -29,16 +29,14 @@ public class MemberInput extends AppCompatActivity {
         String playerName = getString(R.string.player_name, 1);  // "プレイヤー1" を設定
         nametext.setText(playerName);  // nametextに設定
         ListView memberlist = (ListView) findViewById(R.id.MemberListText);
+        ArrayList<String> playerNames = new ArrayList<>();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, playerNames);
+        memberlist.setAdapter(adapter);;
 
         // TextViewから文字列を取得
         String currentText = numtext.getText().toString();
         // 文字列から数字を取り出す（整数に変換）
         currentNumber = Integer.parseInt(currentText);
-
-        ArrayList<String> playerNames = new ArrayList<>();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, playerNames);
-        memberlist.setAdapter(adapter);;
-
 
         leftbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,9 +79,14 @@ public class MemberInput extends AppCompatActivity {
                         // EditTextを空にする
                         nametext.setText("");
                     }
+                    // 設定人数になったら名前を設定できないようにする
+                    if (playerCount == currentNumber - 1) {
+                        nametext.setEnabled(false);
+                        nametext.setText("これ以上入力できません！");
+                    }
+                } else {
+                    nametext.setText("これ以上入力できません！");
                 }
-//                // 名前入力をプレイヤーなんとか(数字)にする
-//                nametext.setText(getString(R.string.player_name, String.valueOf(currentNumber)));
             }
         });
 
