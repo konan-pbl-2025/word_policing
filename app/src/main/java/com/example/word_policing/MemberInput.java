@@ -14,7 +14,8 @@ import java.util.ArrayList;
 
 public class MemberInput extends AppCompatActivity {
 
-    private int currentNumber = 0;
+    int currentNumber = 0;
+    public static ArrayList<String> playerNames = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +30,6 @@ public class MemberInput extends AppCompatActivity {
         EditText nametext = (EditText) findViewById(R.id.NameText);
         nametext.setHint("プレイヤー１"); // プレイヤー１を表示
         ListView memberlist = (ListView) findViewById(R.id.MemberListText);
-        ArrayList<String> playerNames = new ArrayList<>();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, playerNames);
         memberlist.setAdapter(adapter);;
 
@@ -38,6 +38,7 @@ public class MemberInput extends AppCompatActivity {
         // 文字列から数字を取り出す（整数に変換）
         currentNumber = Integer.parseInt(currentText);
 
+        // 人数減少ボタン
         leftbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +54,8 @@ public class MemberInput extends AppCompatActivity {
                 numtext.setText(String.valueOf(currentNumber));
             }
         });
+
+        // 人数増加ボタン
         rightbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,6 +71,7 @@ public class MemberInput extends AppCompatActivity {
             }
         });
 
+        // メンバー確定ボタン
         addbutoon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +101,7 @@ public class MemberInput extends AppCompatActivity {
             }
         });
 
+        // 次の画面に遷移
         nextbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
