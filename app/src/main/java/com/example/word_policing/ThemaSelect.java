@@ -19,7 +19,7 @@ public class ThemaSelect {
         System.out.println("ThemeSelect");
 
         Random rnd = new Random();
-        int targetLine = rnd.nextInt(80); // 0〜79のランダムな行番号
+        int targetLine = rnd.nextInt(80) + 1; // 1〜80のランダムな行番号
 
         try (InputStream is = assetManager.open("ThemaSelection.csv");
              BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
@@ -31,8 +31,8 @@ public class ThemaSelect {
                 if (currentLine == targetLine) {
                     String[] columns = line.split(",");
                     if (columns.length >= 2) {
-                        ThemaOne = columns[1];
-                        ThemaTwo = columns[2];
+                        ThemaOne = columns[0];
+                        ThemaTwo = columns[1];
                         Log.d("CSVRead", "ThemaOne=" + ThemaOne + ", ThemaTwo=" + ThemaTwo);
                         System.out.println(ThemaOne);
                     } else {
