@@ -16,10 +16,11 @@ import java.util.List;
 public class ThemeDisplay extends AppCompatActivity {
 
     int playerIndex = 0;
-    int playerNum = 5; //プレイヤーの人数
+    int playerNum = MemberInput.playerNames.size(); //プレイヤーの人数
+
     int wolfnum = 1; //狼の人数
-    String maintheme = "無問題";
-    String wolftheme = "がお";
+
+
     String theme;
 
 
@@ -29,6 +30,14 @@ public class ThemeDisplay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theme_display);
+
+        ThemaSelect.select(this.getAssets());
+        String maintheme = ThemaSelect.ThemaOne;
+        String wolftheme = ThemaSelect.ThemaTwo;
+
+        System.out.println(playerNum);
+        System.out.println(maintheme);
+        System.out.println(wolftheme);
 
         TextView themetext = findViewById(R.id.text);
         Button personcheck = findViewById(R.id.person);
