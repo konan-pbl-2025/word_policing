@@ -18,41 +18,38 @@ public class GameWithVote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_with_vote);
 
-        // TextView と Button を ID で取得
+        // CSV 読み込みを実行（確実にここで呼ぶ）
+        ThemaSelect.select(getAssets());
+
+        // UI 要素取得
         TextView topicText = findViewById(R.id.topic);
         Button button1 = findViewById(R.id.topic1);
         Button button2 = findViewById(R.id.topic2);
         Button button3 = findViewById(R.id.topic3);
         Button finish = findViewById(R.id.kill);
-        // ボタン1のクリック処理
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                topicText.setText("ぶっちゃけやばい？");
-            }
-        });
 
-        // ボタン2のクリック処理
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                topicText.setText("ひとでいうたらどいつ？");
-            }
-        });
+        // 読み込んだ質問をセット
+        button1.setText("話題１");
+        button2.setText("話題２");
+        button3.setText("話題３");
 
-        // ボタン3のクリック処理
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                topicText.setText("すごいよね。");
-            }
-        });
-        finish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent member = new Intent(GameWithVote.this, killselect.class);
-                startActivity(member);
-            }
+        // ボタン1
+        button1.setOnClickListener(v ->
+                topicText.setText(ThemaSelect.Question1));
+
+        // ボタン2
+        button2.setOnClickListener(v ->
+                topicText.setText(ThemaSelect.Question2));
+
+        // ボタン3
+        button3.setOnClickListener(v ->
+                topicText.setText(ThemaSelect.Question3));
+
+        // 次の画面へ
+        finish.setOnClickListener(v -> {
+            Intent member = new Intent(GameWithVote.this, killselect.class);
+            startActivity(member);
         });
     }
 }
+

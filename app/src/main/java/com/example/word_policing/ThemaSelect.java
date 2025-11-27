@@ -1,9 +1,7 @@
 package com.example.word_policing;
 
 import android.content.res.AssetManager;
-import android.os.Bundle;
 import android.util.Log;
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -14,32 +12,55 @@ public class ThemaSelect {
 
     public static String ThemaOne;
     public static String ThemaTwo;
+    public static String Question1;
+    public static String Question2;
+    public static String Question3;
+
+    // 一度決めた行を保持しておく
+    private static boolean initialized = false;
 
     public static void select(AssetManager assetManager) {
-        System.out.println("ThemeSelect");
+
+        // すでに決まっているなら、もうランダムに選び直さない
+        if (initialized) {
+            Log.d("ThemaSelect", "already initialized. use same thema & questions");
+            return;
+        }
 
         Random rnd = new Random();
-        int targetLine = rnd.nextInt(80) + 1; // 1〜80のランダムな行番号
+        int targetLine = rnd.nextInt(80) + 1; // 1〜80
+
+        Log.d("ThemaSelect", "targetLine = " + targetLine);
 
         try (InputStream is = assetManager.open("ThemaSelection.csv");
              BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
 
-            String line = null;
+            String line;
             int currentLine = 1;
 
             while ((line = reader.readLine()) != null) {
+
                 if (currentLine == targetLine) {
-                    String[] columns = line.split(",");
-                    if (columns.length >= 2) {
-                        ThemaOne = columns[0];
-                        ThemaTwo = columns[1];
-                        Log.d("CSVRead", "ThemaOne=" + ThemaOne + ", ThemaTwo=" + ThemaTwo);
-                        System.out.println(ThemaOne);
-                    } else {
-                        Log.e("CSVRead", "列数が足りません: " + line);
+                    String[] col = line.split(",");
+
+                    if (col.length < 5) {
+                        Log.e("ThemaSelect", "列数が足りません: " + line);
+                        return;
                     }
+
+                    ThemaOne  = col[0];
+                    ThemaTwo  = col[1];
+                    Question1 = col[2];
+                    Question2 = col[3];
+                    Question3 = col[4];
+
+                    Log.d("ThemaSelect", "ThemaOne=" + ThemaOne + ", ThemaTwo=" + ThemaTwo);
+                    Log.d("ThemaSelect", "Q1=" + Question1 + ", Q2=" + Question2 + ", Q3=" + Question3);
+
+                    initialized = true;
                     break;
                 }
+
                 currentLine++;
             }
 
@@ -48,4 +69,8 @@ public class ThemaSelect {
         }
     }
 
+    // 1ゲーム終わった後にリセットしたいとき用
+    public static void reset() {
+        initialized = false;
+    }
 }
