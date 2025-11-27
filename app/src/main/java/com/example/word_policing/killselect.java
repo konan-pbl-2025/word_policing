@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 
 public class killselect extends AppCompatActivity {
+    public static boolean saveordead;
     int currentNumber = 0;
     int max;
     int min = 0;
@@ -49,7 +50,13 @@ public class killselect extends AppCompatActivity {
         // 文字列から数字を取り出す（整数に変換）
         currentNumber = Integer.parseInt(currentText);
         max = currentNumber - 1;
-        numtext.setText(String.valueOf(indexNum));
+
+        StringBuilder tmp = new StringBuilder();
+        tmp.append(indexNum + 1);
+        tmp.append("人目");
+        numtext.setText(tmp.toString());
+        killPlayer.setText(player.get(indexNum));
+        //numtext.setText(String.valueOf(indexNum));
         killPlayer.setText(player.get(indexNum));
         // 人数減少ボタン
         leftbutton.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +71,10 @@ public class killselect extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                 }
                 // 結果をTextViewにセット
-                numtext.setText(String.valueOf(indexNum));
+                StringBuilder tmpplayer2 = new StringBuilder();
+                tmpplayer2.append(String.valueOf(indexNum + 1) );
+                tmpplayer2.append("人目");
+                numtext.setText(tmpplayer2.toString());
                 killPlayer.setText(player.get(indexNum));
             }
         });
@@ -73,6 +83,7 @@ public class killselect extends AppCompatActivity {
         rightbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("yes");
                 // 数字を加算する
                 if (indexNum < max) {
                     indexNum += 1;  // 現在人数+1
@@ -81,7 +92,11 @@ public class killselect extends AppCompatActivity {
                     //nametext.setHint("プレイヤー" + currentNumber);
                 }
                 // 結果をTextViewにセット
-                numtext.setText(String.valueOf(indexNum));
+                StringBuilder tmpplayer = new StringBuilder();
+                int n =indexNum + 1;
+                tmpplayer.append(n);
+                tmpplayer.append("人目");
+                numtext.setText(tmpplayer.toString());
                 killPlayer.setText(player.get(indexNum));
             }
         });
@@ -120,12 +135,18 @@ public class killselect extends AppCompatActivity {
         nextbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent member = new Intent(killselect.this, MainActivity.class);
-                member.putExtra("voteOutPlayer", indexNum); // プレイヤー番号を渡す
-                startActivity(member);
+                if(indexNum + 1 == ThemeDisplay.wolfplayernum){
+                    saveordead = true;
+                    numtext.setText("勝ちです");
+                }
+                Intent member2 = new Intent(killselect.this, Result.class);
+                startActivity(member2);
+                //member.putExtra("voteOutPlayer", indexNum); // プレイヤー番号を渡す
+                //startActivity(member);
 
             }
         });
+
 
 
     }
