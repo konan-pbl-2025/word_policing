@@ -20,6 +20,7 @@ public class ThemeDisplay extends AppCompatActivity {
 
     int wolfnum = 1; //狼の人数
 
+    public  static HashSet<Integer> wolfchecker;
 
     String theme;
 
@@ -50,7 +51,8 @@ public class ThemeDisplay extends AppCompatActivity {
         }
         // シャッフルして先頭からk個を選ぶ
         Collections.shuffle(numbers);
-        HashSet<Integer> wolfchecker = new HashSet<>();
+        System.out.println(numbers);
+        wolfchecker = new HashSet<>();
         for (int i = 0; i < k; i++) {
             wolfchecker.add(numbers.get(i));
         }
