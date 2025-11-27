@@ -19,6 +19,7 @@ public class ThemeDisplay extends AppCompatActivity {
     int playerNum = MemberInput.playerNames.size(); //プレイヤーの人数
 
     int wolfnum = 1; //狼の人数
+    public static int wolfplayernum;
 
 
     String theme;
@@ -53,6 +54,7 @@ public class ThemeDisplay extends AppCompatActivity {
         HashSet<Integer> wolfchecker = new HashSet<>();
         for (int i = 0; i < k; i++) {
             wolfchecker.add(numbers.get(i));
+            wolfplayernum = numbers.get(i);
         }
 
         // 初期表示
