@@ -5,28 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.AlteredCharSequence;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static boolean flagOriginal = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Button GeneralButton = (Button) findViewById(R.id.general);
         Button OriginalButton = (Button) findViewById(R.id.original);
         Button RuleButton = (Button) findViewById(R.id.rule);
-
         GeneralButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent member = new Intent(MainActivity.this, MemberInput.class);
+                flagOriginal = false;
                 startActivity(member);
             }
         });
@@ -35,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent member = new Intent(MainActivity.this, MemberInput.class);
+                Intent member = new Intent(MainActivity.this, OriginalThema.class);
+                flagOriginal = true;
                 startActivity(member);
             }
         });

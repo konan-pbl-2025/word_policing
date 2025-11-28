@@ -33,9 +33,17 @@ public class ThemeDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theme_display);
 
-        ThemaSelect.select(this.getAssets());
-        String maintheme = ThemaSelect.ThemaOne;
-        String wolftheme = ThemaSelect.ThemaTwo;
+        boolean FlagOriginal = MainActivity.flagOriginal;
+        String maintheme;
+        String wolftheme;
+        if (FlagOriginal){
+            ThemaSelect.select(this.getAssets());
+            maintheme = OriginalThema.Thema1;
+            wolftheme = OriginalThema.Thema2;
+        }else{
+            maintheme = ThemaSelect.ThemaOne;
+            wolftheme = ThemaSelect.ThemaTwo;
+        }
 
         System.out.println(playerNum);
         System.out.println(maintheme);
