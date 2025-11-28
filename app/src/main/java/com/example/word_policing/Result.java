@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import androidx.core.content.ContextCompat;
 
 public class Result extends AppCompatActivity {
 
@@ -54,6 +55,25 @@ public class Result extends AppCompatActivity {
                 new String[]{"role", "name"},
                 new int[]{R.id.role, R.id.name}
         );
+        adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
+            @Override
+            public boolean setViewValue(View view, Object data, String textRepresentation) {
+                if (view.getId() == R.id.role) {
+                    TextView roleText = (TextView) view;
+                    String role = (String) data;
+                    roleText.setText(role);
+
+                    // 色分け
+                    if (role.equals("市民")) {
+                        roleText.setTextColor(ContextCompat.getColor(Result.this, R.color.blue));
+                    } else if (role.equals("ウルフ")) {
+                        roleText.setTextColor(ContextCompat.getColor(Result.this, R.color.red));
+                    }
+                    return true; // 自分で処理したので true
+                }
+                return false; // それ以外は SimpleAdapter に任せる
+            }
+        });
 
         memberlist.setAdapter(adapter);
         System.out.println(list);
