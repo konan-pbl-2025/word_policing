@@ -41,6 +41,7 @@ public class ThemeDisplay extends AppCompatActivity {
             maintheme = OriginalThema.Thema1;
             wolftheme = OriginalThema.Thema2;
         }else{
+            ThemaSelect.select(this.getAssets());
             maintheme = ThemaSelect.ThemaOne;
             wolftheme = ThemaSelect.ThemaTwo;
         }
