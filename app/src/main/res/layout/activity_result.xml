@@ -1,34 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Result">
 
-    <TextView
-        android:id="@+id/resulttext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="449dp"
+        android:layout_height="782dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.126" />
+        app:srcCompat="@drawable/haikei_vellum" />
+
+    <TextView
+        android:id="@+id/resulttext"
+        android:layout_width="103dp"
+        android:layout_height="35dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.159" />
 
     <TextView
         android:id="@+id/wintext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="231dp"
+        android:layout_height="68dp"
+        android:gravity="center_horizontal|center_vertical"
         android:text="TextView"
+        android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resulttext"
-        app:layout_constraintVertical_bias="0.064" />
+        app:layout_constraintVertical_bias="0.065" />
 
     <ListView
         android:id="@+id/resultmemberlist"
@@ -44,11 +57,14 @@
         android:id="@+id/restartbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="次へ"
-        app:layout_constraintBottom_toTopOf="@+id/finishbutton"
+        android:text="もう一回やる"
+        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultmemberlist" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.934" />
 
     <Button
         android:id="@+id/finishbutton"
@@ -57,7 +73,8 @@
         android:text="スタート画面"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultmemberlist"
-        app:layout_constraintVertical_bias="0.653" />
+        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintStart_toEndOf="@+id/restartbutton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.934" />
 </androidx.constraintlayout.widget.ConstraintLayout>
