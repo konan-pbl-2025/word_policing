@@ -42,6 +42,8 @@ public class ThemeDisplay extends AppCompatActivity {
         System.out.println(wolftheme);
 
         TextView themetext = findViewById(R.id.text);
+        TextView odai = findViewById(R.id.odai);
+        odai.setText("");
         Button personcheck = findViewById(R.id.person);
         int n = playerNum; // 数字の範囲（1〜n）
         int k = wolfnum;  // 選ぶ個数
@@ -88,18 +90,21 @@ public class ThemeDisplay extends AppCompatActivity {
                             // お題表示フェーズへ
                             if (wolfchecker.contains(playerIndex + 1)) theme = wolftheme;
                             else theme = maintheme;
-                            themetext.setText("お題 \n「" + theme + "」");
+                            odai.setText("お題");
+                            themetext.setText("「" + theme + "」");
                             personcheck.setText("次の人に回す");
                             isConfirmPhase = false;
                         } else {
                             // 次の人の確認フェーズへ
                             playerIndex++;
                             if (playerIndex < playerNum) {
+                                odai.setText("");
                                 themetext.setText(MemberInput.playerNames.get(playerIndex) + "ですか");
                                 personcheck.setText("確定");
                                 isConfirmPhase = true;
                             } else {
-                                themetext.setText("全員にお題が渡りました");
+                                odai.setText("");
+                                themetext.setText("全員にお題が\n渡りました");
                                 personcheck.setText("会議を始める");
                             }
                         }
