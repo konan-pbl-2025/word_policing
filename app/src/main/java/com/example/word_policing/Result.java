@@ -21,12 +21,11 @@ public class Result extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         HashSet<Integer> wolfnum = ThemeDisplay.wolfchecker;
+        boolean kill = killselect.saveordead;
 
         TextView resulttext = (TextView) findViewById(R.id.resulttext);
         TextView wintext = (TextView) findViewById(R.id.wintext);
         resulttext.setText("結果発表");
-
-        boolean kill = true;
 
         if (kill){
             wintext.setText("ウルフの勝ち！");
