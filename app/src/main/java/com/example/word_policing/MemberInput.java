@@ -21,6 +21,8 @@ public class MemberInput extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_input);
 
+        playerNames.clear();
+
         Button leftbutton = (Button) findViewById(R.id.left);
         Button rightbutton = (Button) findViewById(R.id.right);
         Button addbutoon = (Button) findViewById(R.id.AddButton);
