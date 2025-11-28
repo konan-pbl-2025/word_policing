@@ -19,8 +19,8 @@
 
     <TextView
         android:id="@+id/text"
-        android:layout_width="291dp"
-        android:layout_height="130dp"
+        android:layout_width="313dp"
+        android:layout_height="135dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="TextView"
         android:textSize="34sp"
@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintVertical_bias="0.566" />
 
     <Button
         android:id="@+id/person"
@@ -41,4 +41,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.937" />
+
+    <TextView
+        android:id="@+id/odai"
+        android:layout_width="137dp"
+        android:layout_height="72dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="TextView"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

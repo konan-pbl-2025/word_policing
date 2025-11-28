@@ -22,6 +22,8 @@ public class MemberInput extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_input);
 
+        playerNames.clear();
+
         Button leftbutton = (Button) findViewById(R.id.left);
         Button rightbutton = (Button) findViewById(R.id.right);
         Button pluswolfbutton = (Button) findViewById(R.id.pluswolf);
@@ -104,6 +106,7 @@ public class MemberInput extends AppCompatActivity {
 
 
         // メンバー確定ボタン
+
         addbutoon.setOnClickListener(v -> addPlayer(nametext, adapter));
         // エンターキーでもメンバー追加
         nametext.setOnEditorActionListener((v, actionId, event) -> {
@@ -115,7 +118,7 @@ public class MemberInput extends AppCompatActivity {
         nextbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (playerNames.size() == currentNumber){
+            if (playerNames.size() == currentNumber){
                     Intent member = new Intent(MemberInput.this, ThemeDisplay.class);
                     startActivity(member);
                 }

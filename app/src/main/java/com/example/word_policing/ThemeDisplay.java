@@ -33,15 +33,26 @@ public class ThemeDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theme_display);
 
-        ThemaSelect.select(this.getAssets());
-        String maintheme = ThemaSelect.ThemaOne;
-        String wolftheme = ThemaSelect.ThemaTwo;
+        boolean FlagOriginal = MainActivity.flagOriginal;
+        String maintheme;
+        String wolftheme;
+        if (FlagOriginal){
+            ThemaSelect.select(this.getAssets());
+            maintheme = OriginalThema.Thema1;
+            wolftheme = OriginalThema.Thema2;
+        }else{
+            ThemaSelect.select(this.getAssets());
+            maintheme = ThemaSelect.ThemaOne;
+            wolftheme = ThemaSelect.ThemaTwo;
+        }
 
         System.out.println(playerNum);
         System.out.println(maintheme);
         System.out.println(wolftheme);
 
         TextView themetext = findViewById(R.id.text);
+        TextView odai = findViewById(R.id.odai);
+        odai.setText("");
         Button personcheck = findViewById(R.id.person);
         int n = playerNum; // 数字の範囲（1〜n）
         int k = wolfnum;  // 選ぶ個数
@@ -66,47 +77,46 @@ public class ThemeDisplay extends AppCompatActivity {
         personcheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                personcheck.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String buttonText = personcheck.getText().toString();
+                String buttonText = personcheck.getText().toString();
 
-                        if (buttonText.equals("会議を始める")) {
-                            // 会議画面へ遷移
-                            Intent intent = new Intent(ThemeDisplay.this, GameWithVote.class);
-                            startActivity(intent);
-                            return;
-                        }
+                if (buttonText.equals("会議を始める")) {
+                    // 会議画面へ遷移
+                    Intent intent = new Intent(ThemeDisplay.this, GameWithVote.class);
+                    startActivity(intent);
+                    return;
+                }
 
-                        if (playerIndex >= playerNum) {
-                            themetext.setText("全員にお題が渡りました");
-                            personcheck.setText("会議を始める");
-                            return;
-                        }
+                if (playerIndex >= playerNum) {
+                    themetext.setText("全員にお題が渡りました");
+                    personcheck.setText("会議を始める");
+                    return;
+                }
 
-                        if (isConfirmPhase) {
-                            // お題表示フェーズへ
-                            if (wolfchecker.contains(playerIndex + 1)) theme = wolftheme;
-                            else theme = maintheme;
-                            themetext.setText("お題 \n「" + theme + "」");
-                            personcheck.setText("次の人に回す");
-                            isConfirmPhase = false;
-                        } else {
-                            // 次の人の確認フェーズへ
-                            playerIndex++;
-                            if (playerIndex < playerNum) {
-                                themetext.setText(MemberInput.playerNames.get(playerIndex) + "ですか");
-                                personcheck.setText("確定");
-                                isConfirmPhase = true;
-                            } else {
-                                themetext.setText("全員にお題が渡りました");
-                                personcheck.setText("会議を始める");
-                            }
-                        }
+                if (isConfirmPhase) {
+                    // お題表示フェーズへ
+                    if (wolfchecker.contains(playerIndex + 1)) theme = wolftheme;
+                    else theme = maintheme;
+                    odai.setText("お題");
+                    themetext.setText("「" + theme + "」");
+                    personcheck.setText("次の人に回す");
+                    isConfirmPhase = false;
+                } else {
+                    // 次の人の確認フェーズへ
+                    playerIndex++;
+                    if (playerIndex < playerNum) {
+                        odai.setText("");
+                        themetext.setText(MemberInput.playerNames.get(playerIndex) + "ですか");
+                        personcheck.setText("確定");
+                        isConfirmPhase = true;
+                    } else {
+                        odai.setText("");
+                        themetext.setText("全員にお題が\n渡りました");
+                        personcheck.setText("会議を始める");
                     }
-                });
+                }
 
-            }
+            };
+
         });
     }
 }

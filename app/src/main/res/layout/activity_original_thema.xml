@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OriginalThema">
+
+    <EditText
+        android:id="@+id/Thema2Name"
+        android:layout_width="238dp"
+        android:layout_height="62dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.289"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.394" />
+
+    <Button
+        android:id="@+id/Nextbutton"
+        android:layout_width="133dp"
+        android:layout_height="80dp"
+        android:text="次へ"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Odai"
+        android:layout_width="144dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="117dp"
+        android:layout_marginEnd="204dp"
+        android:layout_marginBottom="22dp"
+        android:text="お題を入れてください"
+        app:layout_constraintBottom_toTopOf="@+id/Thema1Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/Thema1Name"
+        android:layout_width="238dp"
+        android:layout_height="62dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.289"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.263" />
+
+    <Button
+        android:id="@+id/Thema1Add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="186dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="27dp"
+        android:text="追加1"
+        app:layout_constraintBottom_toTopOf="@+id/Thema2Add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Thema1Name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Thema2Add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="追加2"
+        tools:layout_editor_absoluteX="298dp"
+        tools:layout_editor_absoluteY="261dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
