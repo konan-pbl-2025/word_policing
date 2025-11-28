@@ -69,6 +69,7 @@ public class Result extends AppCompatActivity {
         restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ThemaSelect.reset();
                 Intent member = new Intent(Result.this, ThemeDisplay.class);
                 startActivity(member);
             }
@@ -77,6 +78,7 @@ public class Result extends AppCompatActivity {
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ThemaSelect.reset();
                 Intent member = new Intent(Result.this, MainActivity.class);
                 startActivity(member);
             }
