@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class MemberInput extends AppCompatActivity {
 
     int currentNumber = 0;
+    public static int wolfcount = 1;
     public static ArrayList<String> playerNames = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +24,14 @@ public class MemberInput extends AppCompatActivity {
 
         Button leftbutton = (Button) findViewById(R.id.left);
         Button rightbutton = (Button) findViewById(R.id.right);
+        Button pluswolfbutton = (Button) findViewById(R.id.pluswolf);
+        Button lesswolfbutton = (Button) findViewById(R.id.lesswolf);
         Button addbutoon = (Button) findViewById(R.id.AddButton);
         Button nextbutton = (Button) findViewById(R.id.NextButton);
         TextView numtext = (TextView) findViewById(R.id.num);
+        TextView wolfnumbertext = (TextView) findViewById(R.id.wolfnumber);
         numtext.setText(String.valueOf(3));   // 初期値
+        wolfnumbertext.setText(String.valueOf(1));   // 初期値
         EditText nametext = (EditText) findViewById(R.id.NameText);
         nametext.setHint("プレイヤー１"); // プレイヤー１を表示
         ListView memberlist = (ListView) findViewById(R.id.MemberListText);
@@ -55,6 +60,18 @@ public class MemberInput extends AppCompatActivity {
             }
         });
 
+        lesswolfbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 数字を減算する
+                if (wolfcount > 1) {
+                    wolfcount -= 1;  // 現在人数-1
+                }
+                // 結果をTextViewにセット
+                wolfnumbertext.setText(String.valueOf(wolfcount));
+            }
+        });
+
         // 人数増加ボタン
         rightbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,34 +88,27 @@ public class MemberInput extends AppCompatActivity {
             }
         });
 
-        // メンバー確定ボタン
-        addbutoon.setOnClickListener(new View.OnClickListener() {
+        pluswolfbutton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                int playerCount = playerNames.size();
-                if (playerCount < currentNumber){
-                    // EditTextから文字列を取得
-                    String playerName = nametext.getText().toString().trim();
-
-                    // 文字列が空でない場合のみ追加
-                    if (!playerName.isEmpty()) {
-                        // ListViewのデータに追加
-                        playerNames.add(playerName);
-                        // Adapterに変更を通知してリストを更新
-                        adapter.notifyDataSetChanged();
-
-                        // EditTextを空にする
-                        nametext.setText("");
-                    }
-                    // 設定人数になったら名前を設定できないようにする
-                    if (playerCount == currentNumber - 1) {
-                        nametext.setEnabled(false);
-                        nametext.setHint("これ以上入力できません！");
-                    }
-                } else {
-                    nametext.setHint("これ以上入力できません！");
+            public void onClick(View view) {
+                // 数字を加算する
+                int ttmmp = currentNumber / 2;
+                if(ttmmp *2 == currentNumber) ttmmp--;
+                if(wolfcount < ttmmp){
+                    wolfcount ++;
+                    // 結果をTextViewにセット
+                    wolfnumbertext.setText(String.valueOf(wolfcount));
                 }
             }
+        });
+
+
+        // メンバー確定ボタン
+        addbutoon.setOnClickListener(v -> addPlayer(nametext, adapter));
+        // エンターキーでもメンバー追加
+        nametext.setOnEditorActionListener((v, actionId, event) -> {
+            addPlayer(nametext, adapter);
+            return true; // キー入力を消費
         });
 
         // 次の画面に遷移
@@ -112,5 +122,23 @@ public class MemberInput extends AppCompatActivity {
             }
         });
 
+
+    }
+    private void addPlayer(EditText nametext, ArrayAdapter<String> adapter) {
+        int playerCount = playerNames.size();
+        if (playerCount < currentNumber) {
+            String playerName = nametext.getText().toString().trim();
+            if (!playerName.isEmpty()) {
+                playerNames.add(playerName);
+                adapter.notifyDataSetChanged();
+                nametext.setText("");
+            }
+            if (playerCount >= currentNumber) {
+                nametext.setEnabled(false);
+                nametext.setHint("これ以上入力できません！");
+            }
+        } else {
+            nametext.setHint("これ以上入力できません！");
+        }
     }
 }

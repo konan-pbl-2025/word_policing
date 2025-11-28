@@ -38,7 +38,7 @@ public class killselect extends AppCompatActivity {
         Button nextbutton = (Button) findViewById(R.id.NextButton);
         TextView numtext = (TextView) findViewById(R.id.num);
         TextView killPlayer = (TextView) findViewById(R.id.textView);
-        numtext.setText(String.valueOf(3));   // 初期値
+        numtext.setText(String.valueOf(MemberInput.playerNames.size()));   // 初期値
         //EditText nametext = (EditText) findViewById(R.id.NameText);
         //nametext.setHint("プレイヤー１"); // プレイヤー１を表示
         //ListView memberlist = (ListView) findViewById(R.id.MemberListText);
@@ -135,9 +135,8 @@ public class killselect extends AppCompatActivity {
         nextbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(indexNum + 1 == ThemeDisplay.wolfplayernum){
+                if(ThemeDisplay.wolfchecker.contains(indexNum)){
                     saveordead = true;
-                    numtext.setText("勝ちです");
                 }
                 Intent member2 = new Intent(killselect.this, Result.class);
                 startActivity(member2);
