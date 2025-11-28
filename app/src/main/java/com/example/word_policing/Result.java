@@ -80,9 +80,9 @@ public class Result extends AppCompatActivity {
 
         // 勝利チームの表示
         if (kill){
-            wintext.setText("ウルフの勝ち！");
-        } else {
             wintext.setText("市民の勝ち！");
+        } else {
+            wintext.setText("ウルフの勝ち！");
         }
 
 

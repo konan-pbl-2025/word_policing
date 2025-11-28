@@ -74,34 +74,13 @@ public class MemberInput extends AppCompatActivity {
         });
 
         // メンバー確定ボタン
-        addbutoon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int playerCount = playerNames.size();
-                if (playerCount < currentNumber){
-                    // EditTextから文字列を取得
-                    String playerName = nametext.getText().toString().trim();
-
-                    // 文字列が空でない場合のみ追加
-                    if (!playerName.isEmpty()) {
-                        // ListViewのデータに追加
-                        playerNames.add(playerName);
-                        // Adapterに変更を通知してリストを更新
-                        adapter.notifyDataSetChanged();
-
-                        // EditTextを空にする
-                        nametext.setText("");
-                    }
-                    // 設定人数になったら名前を設定できないようにする
-                    if (playerCount == currentNumber - 1) {
-                        nametext.setEnabled(false);
-                        nametext.setHint("これ以上入力できません！");
-                    }
-                } else {
-                    nametext.setHint("これ以上入力できません！");
-                }
-            }
+        addbutoon.setOnClickListener(v -> addPlayer(nametext, adapter));
+        // エンターキーでもメンバー追加
+        nametext.setOnEditorActionListener((v, actionId, event) -> {
+            addPlayer(nametext, adapter);
+            return true; // キー入力を消費
         });
+
 
         // 次の画面に遷移
         nextbutton.setOnClickListener(new View.OnClickListener() {
@@ -114,5 +93,23 @@ public class MemberInput extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void addPlayer(EditText nametext, ArrayAdapter<String> adapter) {
+        int playerCount = playerNames.size();
+        if (playerCount < currentNumber) {
+            String playerName = nametext.getText().toString().trim();
+            if (!playerName.isEmpty()) {
+                playerNames.add(playerName);
+                adapter.notifyDataSetChanged();
+                nametext.setText("");
+            }
+            if (playerCount == currentNumber - 1) {
+                nametext.setEnabled(false);
+                nametext.setHint("これ以上入力できません！");
+            }
+        } else {
+            nametext.setHint("これ以上入力できません！");
+        }
     }
 }
