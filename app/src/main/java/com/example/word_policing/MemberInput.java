@@ -141,6 +141,7 @@ public class MemberInput extends AppCompatActivity {
                 nametext.setHint("これ以上入力できません！");
             }
         } else {
+            nametext.setEnabled(false);
             nametext.setHint("これ以上入力できません！");
         }
     }
