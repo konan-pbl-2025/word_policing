@@ -13,6 +13,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
+import android.media.AudioAttributes;
+import android.media.SoundPool;
+
 public class ThemeDisplay extends AppCompatActivity {
 
     int playerIndex = 0;
@@ -24,6 +27,8 @@ public class ThemeDisplay extends AppCompatActivity {
     public  static HashSet<Integer> wolfchecker;
 
     String theme;
+    private SoundPool soundPool;
+    private int clickSound;
 
 
     boolean isConfirmPhase = true; // true: 確認画面, false: お題画面
@@ -32,6 +37,19 @@ public class ThemeDisplay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theme_display);
+        // SoundPool の初期化
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_GAME)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build();
+
+        soundPool = new SoundPool.Builder()
+                .setMaxStreams(5) // 同時に鳴らせる音の数
+                .setAudioAttributes(audioAttributes)
+                .build();
+
+        // 音源をロード
+        clickSound = soundPool.load(this, R.raw.wolf, 1);
 
         boolean FlagOriginal = MainActivity.flagOriginal;
         String maintheme;
@@ -80,6 +98,7 @@ public class ThemeDisplay extends AppCompatActivity {
                 String buttonText = personcheck.getText().toString();
 
                 if (buttonText.equals("会議を始める")) {
+                    soundPool.play(clickSound, 1f, 1f, 0, 0, 1f);
                     // 会議画面へ遷移
                     Intent intent = new Intent(ThemeDisplay.this, GameWithVote.class);
                     startActivity(intent);
