@@ -56,51 +56,101 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.263" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/direction_left"
+        android:layout_width="106dp"
+        android:layout_height="72dp"
+        android:background="@drawable/dark_button"
+        android:fontFamily="serif"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:text="減らす"
+        android:textColor="#E6D5A3"
+
+        android:textSize="18sp"
+        app:backgroundTint="@null"
+        app:cornerRadius="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/num"
-        app:layout_constraintHorizontal_bias="0.74"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051" />
+        app:layout_constraintVertical_bias="0.039"
+        app:strokeColor="@null" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/AddButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="96dp"
+        android:layout_height="72dp"
+        android:background="@drawable/dark_button"
+        android:fontFamily="serif"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
         android:text="追加"
+        android:textSize="18sp"
+
+        android:textColor="#E6D5A3"
+        app:backgroundTint="@null"
+        app:cornerRadius="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/NameText"
+        app:layout_constraintHorizontal_bias="0.914"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.257" />
+        app:layout_constraintVertical_bias="0.267"
+        app:strokeColor="@null" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/direction_right"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.311"
-        app:layout_constraintStart_toEndOf="@+id/num"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.049" />
+        android:layout_width="106dp"
+        android:layout_height="72dp"
+        android:background="@drawable/dark_button"
+        android:fontFamily="serif"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:textSize="18sp"
 
-    <Button
-        android:id="@+id/NextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="増やす"
+        android:textColor="#E6D5A3"
+        app:backgroundTint="@null"
+        app:cornerRadius="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.892"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.039"
+        app:strokeColor="@null" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/NextButton"
+        android:layout_width="96dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/dark_button"
+        android:fontFamily="serif"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:textSize="18sp"
+
+        android:shadowRadius="4"
+        android:text="次へ"
+        android:textColor="#E6D5A3"
+        app:backgroundTint="@null"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MemberListText"
-        app:layout_constraintVertical_bias="0.608" />
+        app:layout_constraintVertical_bias="0.0"
+        app:strokeColor="@null" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
